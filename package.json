@@ -1,0 +1,25 @@
+{
+    "name": "holiday-planner",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/akaser23/holiday-planner.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/akaser23/holiday-planner/issues"
+    },
+    "homepage": "https://github.com/akaser23/holiday-planner#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.3.5"
+    }
+}
