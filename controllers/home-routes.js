@@ -1,13 +1,68 @@
 const router = require('express').Router();
 const {
-  User
+  User,
+  ToDo
 } = require('../models')
 
 router.get('/', (req, res) => {
-  res.render('homepage');
+  ToDo.findAll({
+    attributes: [
+      'id',
+      'title',
+      'contents'
+    ],
+    include: [{
+      model: User,
+      attributes: ['username']
+    }]
+  })
+  .then(dbPostData => {
+    const posts = dbPostData.map(post => post.get({
+      plain: true
+    }))
+  })
+  res.render('homepage', {
+    posts,
+    loggedIn: req.session.loggedIn
+  });
+})
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
 });
 
-
+router.get('/ToDo/:id', (req, res) => {
+  ToDo.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'content',
+    ],
+    include: [{
+      model: User,
+      attributes: ['username']
+    }]
+  })
+  .then(dbPostData => {
+    if(!dbPostData) {
+      res.status(404).json({
+        message: 'No item found with this ID'
+      })
+      return;
+    }
+    res.render('single-todo', {
+      todo,
+      loggedIn: req.session.loggedIn
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+});
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
