@@ -6,7 +6,7 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const hbs = exphbs.create({});
 
-const SequelizeStore = require('connect-session-sequelize');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
     secret: 'Secrets',
