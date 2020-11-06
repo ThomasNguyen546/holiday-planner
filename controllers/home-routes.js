@@ -4,14 +4,24 @@ const {
   ToDo
 } = require('../models')
 
+
 router.get('/', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('login')
+  }
   ToDo.findAll({
     attributes: [
       'id',
       'title',
       'contents'
-    ]
-  })
+    ],
+  },
+  {
+    where: {
+      user_id: req.session.id
+    }
+  }
+  )
     .then(dbToDoData => {
       const todos = dbToDoData.map(todo => todo.get({ plain: true }));
       res.render('homepage', {
