@@ -4,6 +4,7 @@ const {
   ToDo
 } = require('../models')
 
+//Get all users
 router.get('/', (req, res) => {
   ToDo.findAll({
     attributes: [
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
     }))
   })
   res.render('homepage', {
-    posts,
+    todo,
     loggedIn: req.session.loggedIn
   });
 })
@@ -31,6 +32,7 @@ router.get('/', (req, res) => {
     res.status(500).json(err);
 });
 
+//Get specific user
 router.get('/ToDo/:id', (req, res) => {
   ToDo.findOne({
     where: {
@@ -72,6 +74,7 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
