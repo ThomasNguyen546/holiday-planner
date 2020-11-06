@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { User, ToDo } = require('../models');
+const {
+  User,
+  ToDo
+} = require('../models')
 
+//Get all users
 router.get('/', (req, res) => {
   ToDo.findAll({
     attributes: [
@@ -31,5 +34,62 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+//Get specific user
+router.get('/ToDo/:id', (req, res) => {
+  ToDo.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'content',
+    ],
+    include: [{
+      model: User,
+      attributes: ['username']
+    }]
+  })
+  .then(dbPostData => {
+    if(!dbPostData) {
+      res.status(404).json({
+        message: 'No item found with this ID'
+      })
+      return;
+    }
+    res.render('single-todo', {
+      todo,
+      loggedIn: req.session.loggedIn
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
+});
+
+router.get('*', (req, res) => {
+  res.status(404).send("Can't go there!");
+})
 
 module.exports = router;
