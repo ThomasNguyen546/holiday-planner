@@ -4,66 +4,25 @@ const {
   ToDo
 } = require('../models')
 
-//Get all users
 router.get('/', (req, res) => {
   ToDo.findAll({
     attributes: [
       'id',
       'title',
       'contents'
-    ],
-    include: [{
-      model: User,
-      attributes: ['username']
-    }]
+    ]
   })
-  .then(dbPostData => {
-    const posts = dbPostData.map(post => post.get({
-      plain: true
-    }))
-  })
-  res.render('homepage', {
-    todo,
-    loggedIn: req.session.loggedIn
-  });
-})
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-});
-
-//Get specific user
-router.get('/ToDo/:id', (req, res) => {
-  ToDo.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'title',
-      'content',
-    ],
-    include: [{
-      model: User,
-      attributes: ['username']
-    }]
-  })
-  .then(dbPostData => {
-    if(!dbPostData) {
-      res.status(404).json({
-        message: 'No item found with this ID'
-      })
-      return;
-    }
-    res.render('single-todo', {
-      todo,
-      loggedIn: req.session.loggedIn
+    .then(dbToDoData => {
+      const todos = dbToDoData.map(todo => todo.get({ plain: true }));
+      res.render('homepage', {
+        todos,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
 });
 
 router.get('/login', (req, res) => {
@@ -74,7 +33,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
-
 
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
