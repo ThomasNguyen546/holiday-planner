@@ -4,11 +4,33 @@ const {
     ToDo
 } = require('../../models')
 
-// GET /api/users
+//Get all user
 router.get('/', (req, res) => {
-    // Access our User model and run .findAll() method)
     User.findAll({
-        attributes: { exclude: ['password'] }
+            attributes: {
+                exclude: ['password']
+            }
+        })
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+//Get specific user
+router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: {
+            exclude: ['password']
+        },
+        where: {
+            id: req.params.id,
+        },
+        include: [{
+            model: ToDo,
+            attributes: ['id', 'title', 'contents']
+        }]
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
