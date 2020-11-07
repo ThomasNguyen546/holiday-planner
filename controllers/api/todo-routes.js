@@ -22,7 +22,7 @@ router.post('/', (req,res) => {
     console.log("Elfs at work");
     ToDo.create({
         title: req.body.title,
-        // content: req.body.++++,
+        content: req.body.ToDo_contents,
         user_id: req.session.user_id
     })
     .then((dbPostData) => res.json(dbPostData))
@@ -36,7 +36,7 @@ router.post('/', (req,res) => {
 router.put('/:id', (req, res) => {
     ToDo.update({
         title: req.body.title,
-        // content: req.body.+++
+        content: req.body.ToDo_contents
     }, {
         where: {
             id: req.params.id,
@@ -45,7 +45,7 @@ router.put('/:id', (req, res) => {
     .then((dbPostData) => {
         if (!dbPostData) {
             res.status(404).json({
-                message: "No post found with this id"
+                message: "The Elfs were unable to locate this post."
             });
             return;
         }
