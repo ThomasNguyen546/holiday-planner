@@ -7,10 +7,10 @@ const {
 //Get all user
 router.get('/', (req, res) => {
     User.findAll({
-            attributes: {
-                exclude: ['password']
-            }
-        })
+        attributes: {
+            exclude: ['password']
+        }
+    })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -32,7 +32,13 @@ router.get('/:id', (req, res) => {
             attributes: ['id', 'title', 'contents']
         }]
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -71,10 +77,10 @@ router.get('/:id', (req, res) => {
 // Create a user
 router.post('/', (req, res) => {
     User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        })
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
         .then(dbUserData => {
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;
