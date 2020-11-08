@@ -1,5 +1,6 @@
 const User = require('./User');
 const ToDo = require('./ToDo');
+const Recipe = require('./Recipe');
 
 //create associations
 User.hasMany(ToDo, {
@@ -11,4 +12,14 @@ ToDo.belongsTo(User, {
     onDelete: 'SET NULL'
 });
 
-module.exports = { User, ToDo };
+User.hasMany(Recipe, {
+    foreignKey: 'user_id'
+});
+
+Recipe.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+
+module.exports = { User, ToDo, Recipe };

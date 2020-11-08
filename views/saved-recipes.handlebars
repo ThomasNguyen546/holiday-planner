@@ -1,0 +1,15 @@
+<a href="/search-recipes">Search For New Recipe</a>
+
+{{#if recipes.length}}
+<section>
+  <h2>My Recipes</h2>
+  <ul>
+    {{#each recipes as |recipe|}}
+    <li>
+      {{> recipe-info recipe}}
+      <button>Delete Recipe</button>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
