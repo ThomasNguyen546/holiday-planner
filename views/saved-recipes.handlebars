@@ -6,15 +6,15 @@
   <ul>
     {{#each recipes as |recipe|}}
     <li>
-      <article class="recipe">
+      <div class="recipe" id="{{id}}">
         <div class="title">
-          <a href="/recipe/{{id}}" class="recipe-title">{{title}}</a>
+          <a href="{{recipe_url}}" class="recipe-title" target="_blank">{{title}}</a>
         </div>
         <div class="recipe-url">
           {{recipe_url}}
         </div>
-      </article>
-      <button class="btn" id="delete-recipe-btn">Delete Recipe</button>
+        <button class="delete-recipe-btn">Delete Recipe</button>
+      </div>
     </li>
     {{/each}}
   </ul>

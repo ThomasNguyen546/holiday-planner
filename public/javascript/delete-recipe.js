@@ -2,9 +2,9 @@
 async function deleteRecipeHandler(event) {
   event.preventDefault();
 
-  const id = document.querySelector(".recipe-title").href.toString().split('/') [
-    document.querySelector(".recipe-title").href.toString().split('/').length - 1
-  ];
+  const id = document.querySelector(".recipe").id;
+  console.log(id);
+    
   const response = await fetch(`/api/recipes/${id}`, {
       method: 'DELETE'
   });
@@ -16,4 +16,4 @@ async function deleteRecipeHandler(event) {
   }
 }
 
-document.querySelector("#delete-recipe-btn").addEventListener('click', deleteRecipeHandler);
+document.querySelector(".delete-recipe-btn").addEventListener('click', deleteRecipeHandler);

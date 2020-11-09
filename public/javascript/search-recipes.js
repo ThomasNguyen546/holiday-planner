@@ -135,7 +135,7 @@ var saveBtnHandler = function (event) {
 };
 
 async function saveRecipe(id) {
-  // event.preventDefault();
+ 
   const recipeSelected = document.querySelector(".recipe-card[id='" + id + "']");
   var title = recipeSelected.querySelector("h4.recipe-title").textContent;
   var recipe_url = recipeSelected.querySelector("a.recipe-url").href;
