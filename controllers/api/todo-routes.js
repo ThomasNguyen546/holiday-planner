@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-    User,
+    // User,
     ToDo
 } = require('../../models');
 const { post } = require('../home-routes');
