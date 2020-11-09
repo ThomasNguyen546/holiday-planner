@@ -1,5 +1,5 @@
-var recipeContainerEl = document.getElementById("recipe-container");
-var recipeInputEl = document.getElementById("search-term");
+var recipeContainerEl = document.querySelector("#recipe-container");
+var recipeInputEl = document.querySelector("#search-term");
 
 
 // Recipe Search Form Handler
@@ -51,6 +51,7 @@ var displayRecipes = function () {
   recipeContainerEl.textContent = "";
 
   var recipes = JSON.parse(localStorage.getItem("recipes") );
+  var counter = 0;
 
 // loop through returned recipe objects
   for (var i = 0; i < recipes.length; i++) {
@@ -62,21 +63,24 @@ var displayRecipes = function () {
     
     // create recipe card element
     var recipeEl = document.createElement("div");
-    recipeEl.classList = "card recipe-card";
+    recipeEl.className = "recipe-card";
+    recipeEl.setAttribute('id', counter);
 
     // create recipe title element
     var nameEl= document.createElement("h4");
     nameEl.classList = "recipe-title";
     nameEl.innerHTML = recipeName;
+    recipeEl.appendChild(nameEl);
 
     // create recipe Image element
     var recipeImg = document.createElement("img");
     recipeImg.id = "recipe-image"
     recipeImg.src = recipes[i].recipe.image;
+    recipeEl.appendChild(recipeImg);
 
     // create "view full recipe" link
     var linkEl = document.createElement("a");
-    linkEl.classList = "recipe-link";
+    linkEl.className = "recipe-url";
     var link = document.createTextNode("View Full Recipe");
 
     linkEl.append(link);
@@ -85,42 +89,62 @@ var displayRecipes = function () {
     linkEl.href = recipeSrc;
     linkEl.target = "_blank"
 
+    recipeEl.appendChild(linkEl);
+
     // create Ingredients element
     var ingredientEl = document.createElement("p");
     ingredientEl.classList = "recipe-ingredients";
     ingredientEl.innerHTML = 'Ingredients: ' + '<ul><li>' + ingredients.join("</li><li>"); + '</li></ul>';
+    recipeEl.appendChild(ingredientEl);
 
     // create Health Labels element
     var healthLabelEl = document.createElement("p");
     healthLabelEl.classList = "recipe-health";
     healthLabelEl.innerHTML = "**" + healthLabels;
+    recipeEl.appendChild(healthLabelEl);
 
-    // create save recipe button
-    var saveRecipeBtn = document.createElement("button");
-    saveRecipeBtn.classList = "save-recipe-btn"
-    saveRecipeBtn.innerHTML = "Save Recipe";
-    saveRecipeBtn.onclick = "saveRecipeHandler()"
-   
 
-    // append all inner elements to recipe card
-    recipeEl.append(nameEl, recipeImg, ingredientEl, healthLabelEl, linkEl, saveRecipeBtn);
+    var saveBtnEl = createSaveBtn(counter);
+    recipeEl.appendChild(saveBtnEl);
+    
+    counter ++;
 
-    // append recipe card to document body
     recipeContainerEl.append(recipeEl);
+
   }
 };
 
-async function saveRecipeHandler(event) {
-  event.preventDefault();
+   // create save recipe button
+  var createSaveBtn = function(taskId) {
+    var saveRecipeBtn = document.createElement("button");
+    saveRecipeBtn.innerHTML = "Save Recipe";
+    saveRecipeBtn.className = "btn save-btn";
+    saveRecipeBtn.type = "submit";
+    saveRecipeBtn.setAttribute("id", taskId);
 
-  const title = document.querySelector(".recipe-title").value;
-  const url =  document.querySelector(".recipe-link").value;
+    return saveRecipeBtn;
+};
+
+var saveBtnHandler = function (event) {
+  var targetEl = event.target;
+
+  if (targetEl.matches(".save-btn")) {
+    var id = targetEl.getAttribute("id");
+    saveRecipe(id)
+  }
+};
+
+async function saveRecipe(id) {
+  // event.preventDefault();
+  const recipeSelected = document.querySelector(".recipe-card[id='" + id + "']");
+  var title = recipeSelected.querySelector("h4.recipe-title").textContent;
+  var recipe_url = recipeSelected.querySelector("a.recipe-url").href;
 
   const response = await fetch('/api/recipes', {
     method: 'POST',
     body: JSON.stringify({
       title,
-      url
+      recipe_url
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -131,7 +155,18 @@ async function saveRecipeHandler(event) {
   } else {
     alert(response.statusText);
   }
-}
+};
+
+recipeContainerEl.addEventListener("click", saveBtnHandler);
+
+
+
+
+
+
+
+
+
 
 
 
