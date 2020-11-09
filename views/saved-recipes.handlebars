@@ -6,10 +6,22 @@
   <ul>
     {{#each recipes as |recipe|}}
     <li>
-      {{> recipe-info recipe}}
-      <button>Delete Recipe</button>
+      <article class="recipe">
+        <div class="title">
+          <a href="/recipe/{{id}}" class="recipe-title">{{title}}</a>
+        </div>
+        <div class="recipe-url">
+          {{recipe_url}}
+        </div>
+      </article>
+      <button class="btn" id="delete-recipe-btn">Delete Recipe</button>
     </li>
     {{/each}}
   </ul>
 </section>
 {{/if}}
+
+
+
+<script src="/javascript/delete-recipe.js"></script>
+
