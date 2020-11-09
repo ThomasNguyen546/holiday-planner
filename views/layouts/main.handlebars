@@ -14,6 +14,12 @@
       <h1>
         <a href="/">Holiday Planner</a>
       </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/saved-recipes">My Recipes</a>
+        <button id="logout" class="btn-no-style nav">LOGOUT</button>
+        {{/if}}
+      </nav>
     </header>
     <main>
       {{{ body }}}
@@ -22,6 +28,11 @@
       Thanks for visiting!
     </footer>
   </div>
+
+{{#if loggedIn}}  
+  <script src="/javascript/logout.js"></script>
+{{/if}}
+
 
 </body>
 
