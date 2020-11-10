@@ -3,7 +3,7 @@ const {
     User,
     ToDo
 } = require('../../models');
-const { post } = require('../home-routes');
+const { todo } = require('../home-routes');
 
 //Get all ToDos
 router.get('/', (req, res) => {

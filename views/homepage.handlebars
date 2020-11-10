@@ -1,14 +1,25 @@
-<ol class="post-list">
+<section>
+    <h2>Create New Task</h2>
+
+    <form class="new-todo-form">
+        <div>
+            <label for="todo-title">Title</label>
+            <input type="text" id="todo-title" name="todo-title" />
+        </div>
+        <div>
+            <label for="todo-contents">Contents</label>
+            <input id="todo-contents" name="todo-contents" />
+        </div>
+        <button type="submit" class="btn">Create</button>
+    </form>
+</section>
+
+<ol class="todo-list">
+    {{#each todos as |todo|}}
     <li>
-        <article class="post">
-            <!-- To Do List Title -->
-            <div class="title">
-
-            </div>
-            <!-- Body -->
-            <div class="meta">
-
-            </div>
-        </article>
+        {{> todo-info todo}}
     </li>
+    {{/each}}
 </ol>
+
+<script src="/javascript/add-todo.js"></script>
