@@ -3,19 +3,19 @@
 
     <form class="new-todo-form">
         <div>
-            <label for="type">What type of Task is this?</label>
-            <select name="type" id="type">
+            <label for="todo-type">What type of Task is this?</label>
+            <select name="type" id="todo-type">
                 <option value="general">General</option>
                 <option value="present">Present</option>
                 <option value="event">Event</option>
             </select>
         </div>
         <div>
-            <label for="todo-title">Title</label>
+            <label for="todo-title" id="todo-title-label">Title</label>
             <input type="text" id="todo-title" name="todo-title" />
         </div>
         <div>
-            <label for="todo-contents">Contents</label>
+            <label for="todo-contents" id="todo-contents-label">Contents</label>
             <input id="todo-contents" name="todo-contents" />
         </div>
         <button type="submit" class="btn">Create</button>

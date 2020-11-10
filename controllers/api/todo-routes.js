@@ -21,8 +21,9 @@ router.get('/', (req, res) => {
 router.post('/', (req,res) => {
     console.log("Elfs at work");
     ToDo.create({
+        type: req.body.type,
         title: req.body.title,
-        content: req.body.ToDo_contents,
+        contents: req.body.contents,
         user_id: req.session.user_id
     })
     .then((dbPostData) => res.json(dbPostData))
@@ -35,8 +36,9 @@ router.post('/', (req,res) => {
 //Update a ToDo
 router.put('/:id', (req, res) => {
     ToDo.update({
+        type: req.body.type,
         title: req.body.title,
-        content: req.body.ToDo_contents
+        contents: req.body.contents
     }, {
         where: {
             id: req.params.id,
