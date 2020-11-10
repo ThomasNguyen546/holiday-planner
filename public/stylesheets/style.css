@@ -73,7 +73,13 @@ form label {
     display: flex;
     flex-direction: column;
 }
-  
+
+header {
+    background-image: url("../../assets/images/holidayTest2.jpg");
+    background-size: cover;
+    max-width: 100%;
+}
+
 header {
     border-bottom: 1px solid #ccc;
     display: flex;
@@ -100,4 +106,3 @@ footer {
     padding: 1%;
     font-size: 150%;
 }
-
