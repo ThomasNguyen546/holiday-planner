@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+    integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
   <title>Holiday Planner</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
@@ -14,11 +16,18 @@
       <h1>
         <a href="/">Holiday Planner</a>
       </h1>
+      <br>
       <nav>
-        {{#if loggedIn}}
-        <a href="/saved-recipes">My Recipes</a>
-        <button id="logout" class="btn-no-style nav">LOGOUT</button>
-        {{/if}}
+        <ul>
+          <li>
+            {{#if loggedIn}}
+            <a href="/saved-recipes">My Recipes</a>
+          </li>
+          <li>
+            <button id="logout" class="btn-no-style nav">Logout</button>
+            {{/if}}
+          </li>
+        </ul>
       </nav>
     </header>
     <main>
@@ -29,9 +38,9 @@
     </footer>
   </div>
 
-{{#if loggedIn}}  
+  {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
-{{/if}}
+  {{/if}}
 
 
 </body>
