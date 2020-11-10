@@ -8,7 +8,7 @@ const { todo } = require('../home-routes');
 //Get all ToDos
 router.get('/', (req, res) => {
     ToDo.findAll({
-        attributes: ['id', 'title', 'contents'],
+        attributes: ['id','type', 'title', 'contents'],
     })
     .then ((dbPostData) => res.json(dbPostData))
     .catch((err) => {

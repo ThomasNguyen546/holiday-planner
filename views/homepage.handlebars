@@ -3,6 +3,14 @@
 
     <form class="new-todo-form">
         <div>
+            <label for="type">What type of Task is this?</label>
+            <select name="type" id="type">
+                <option value="general">General</option>
+                <option value="present">Present</option>
+                <option value="event">Event</option>
+            </select>
+        </div>
+        <div>
             <label for="todo-title">Title</label>
             <input type="text" id="todo-title" name="todo-title" />
         </div>

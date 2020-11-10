@@ -1,12 +1,14 @@
 async function newFormHandler(event) {
     event.preventDefault();
 
+    const type = document.querySelector('input[name="todo-type"]').value;
     const title = document.querySelector('input[name="todo-title"]').value;
     const contents = document.querySelector('input[name="todo-contents"]').value;
 
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/todo`, {
         method: 'POST',
         body: JSON.stringify({
+            type,
             title,
             contents
         }),

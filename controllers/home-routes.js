@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
   ToDo.findAll({
     attributes: [
       'id',
+      'type',
       'title',
       'contents'
     ],
