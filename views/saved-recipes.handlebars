@@ -1,0 +1,27 @@
+<a href="/search-recipes">Search For New Recipe</a>
+
+{{#if recipes.length}}
+<section id="saved-recipe-container">
+  <h2 class="page-title">My Recipes</h2>
+  <ul id="saved-recipes">
+    {{#each recipes as |recipe|}}
+    <li>
+      <div class="recipe-line" id="{{id}}">
+        <div>
+          <a href="{{recipe_url}}" class="recipe-title" target="_blank">{{title}}</a>
+        </div>
+        <div class="recipe-url">
+          ({{format_url recipe_url}})
+        </div>
+        <button class="delete-recipe-btn">Delete Recipe</button>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
+
+
+<script src="/javascript/delete-recipe.js"></script>
+

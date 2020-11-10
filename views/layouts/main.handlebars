@@ -16,9 +16,8 @@
       </h1>
       <nav>
         {{#if loggedIn}}
-        <button id="logout" class="btn-no-style">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
+        <a href="/saved-recipes">My Recipes</a>
+        <button id="logout" class="btn-no-style nav">LOGOUT</button>
         {{/if}}
       </nav>
     </header>
@@ -29,6 +28,11 @@
       Thanks for visiting!
     </footer>
   </div>
+
+{{#if loggedIn}}  
+  <script src="/javascript/logout.js"></script>
+{{/if}}
+
 
 </body>
 
