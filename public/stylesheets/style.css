@@ -8,21 +8,22 @@ body, html {
     margin: 0;
     font-family: sans-serif;
     color: #333;
+    background-color: #f7c28f;
 }
   
 a {
     text-decoration: none;
-    color: #225ca3;
+    color: #fc9432;
     font-weight: bold;
     transition: color .1s;
 }
   
 a:hover {
-    color: #3486eb;
+    color: #f5ac67;
 }
   
 button {
-    background-color: #225ca3;
+    background-color: #f2943a;
     border: 0;
     padding: 1%;
     color: white;
@@ -33,7 +34,7 @@ button {
 }
   
 button:hover {
-    background-color: #3486eb;
+    background-color: #f5b171;
 }
   
 .todo-list {
@@ -60,24 +61,28 @@ textarea {
 form > div {
     margin-bottom: 2%;
 }
-  
+
+/* Login/Logout Form */
 form label {
     display: block;
 }
 
-/* Login/Logout Form */
 .login-form {
-    width:30%;
+    width:40%;
 }
 
 .signup-form {
-    width:30%;
+    width:40%;
+}
+
+label {
+    font-size: 20px;
 }
 
 .wrapper {
     width: 100%;
     min-height: 100%;
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -91,7 +96,7 @@ header {
 }
 
 header {
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
     /* display: flex; */
     justify-content: space-between;
     /* align-items: center; */
@@ -212,9 +217,10 @@ main {
 }
   
 footer {
-    border-top: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
     display: flex;
     justify-content: center;
     padding: 1%;
     font-size: 150%;
+    background-image: url("../images/holidayTest1.jpg");
 }
