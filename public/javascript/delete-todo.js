@@ -1,11 +1,9 @@
 async function deleteFormHandler(event) {
     event.preventDefault();
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = $(this).parents(".todo").find(".todo-id").html();
 
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/todo/${id}`, {
         method: 'DELETE'
     });
 
@@ -16,4 +14,4 @@ async function deleteFormHandler(event) {
     }
 }
 
-document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+$('.btn-delete').click(deleteFormHandler);

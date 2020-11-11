@@ -1,14 +1,32 @@
-<ol class="post-list">
-    <li>
-        <article class="post">
-            <!-- To Do List Title -->
-            <div class="title">
+<section>
+    <h2>Create New Task</h2>
 
-            </div>
-            <!-- Body -->
-            <div class="meta">
+    <form class="new-todo-form">
+        <div>
+            <label for="todo-type">What type of Task is this?</label>
+            <select name="type" id="todo-type">
+                <option value="general">General</option>
+                <option value="present">Present</option>
+                <option value="event">Event</option>
+            </select>
+        </div>
+        <div>
+            <label for="todo-title" id="todo-title-label">Title</label>
+            <input type="text" id="todo-title" name="todo-title" />
+        </div>
+        <div>
+            <label for="todo-contents" id="todo-contents-label">Contents</label>
+            <input id="todo-contents" name="todo-contents" />
+        </div>
+        <button type="submit" class="btn">Create</button>
+    </form>
+</section>
 
-            </div>
-        </article>
+<ol class="todo-list">
+    {{#each todos as |todo|}}
+    <li class="todo-item">
+        {{> todo-info todo}}
     </li>
+    {{/each}}
 </ol>
+
