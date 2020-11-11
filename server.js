@@ -3,6 +3,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const path = require('path');
+const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
 const hbs = exphbs.create({ helpers });
@@ -25,6 +26,7 @@ const PORT = process.env.PORT || 3005;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(sess));

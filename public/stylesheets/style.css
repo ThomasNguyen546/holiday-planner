@@ -84,7 +84,7 @@ form label {
 }
 
 header {
-    background-image: url("../../assets/images/holidayTest2.jpg");
+    background-image: url("../images/holidayTest2.jpg");
     background-size: cover;
     max-width: 100%;
     background-position: center;
@@ -92,16 +92,17 @@ header {
 
 header {
     border-bottom: 1px solid #ccc;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     padding: 0 1%;
-    justify-content: center;
+    /* justify-content: center; */
 }
   
 header h1 {
     font-size: 50px;
-    display: flex;
+    /* display: flex; */
+    text-align: center;
 }
 
 /* Navigation Stuff */
@@ -110,11 +111,18 @@ header nav {
 }
 
 header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
     align-items: center;
     list-style: none;
+    /* text-align: center; */
+    margin: 5px;
+    padding: 5px;
+}
+
+nav ul li {
+    display: inline-block;
 }
 
 nav ul li a {
