@@ -1,31 +1,22 @@
-async function editFormHandler(event) {
-    event.preventDefault();
+function editTodo() {
 
-    const type = document.querySelector('input[name="todo-type"]').value.trim();
-    const title = document.querySelector('input[name="todo-title"]').value.trim();
-    const contents = document.querySelector('input[name="todo-contents"]').value.trim();
-    
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const title = $(this).parents(".todo").find(".item-title");
+    const contents = $(this).parents(".todo").find(".item-contents");
 
-    const response = await fetch(`/api/todo/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            type,
-            title,
-            contents
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const titleText = $(title).html();
+    const contentsText = $(contents).html();
 
-    if (response.ok) {
-        document.location.reload();
-    } else {
-        alert(response.statusText);
-    }
+    const textInputTitle = $('<textarea>')
+    .addClass("item-title")
+    .val(titleText);
+
+    const textInputContents = $('<textarea>')
+    .addClass("item-contents")
+    .val(contentsText);
+
+    $(title).replaceWith(textInputTitle);
+    $(contents).replaceWith(textInputContents);
+
 }
 
-document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+$('.btn-edit').click(editTodo);
