@@ -2,7 +2,7 @@
 async function deleteRecipeHandler(event) {
   event.preventDefault();
 
-  const id = document.querySelector(".recipe").id;
+  const id = document.querySelector(".recipe-line").id;
   console.log(id);
     
   const response = await fetch(`/api/recipes/${id}`, {

@@ -13,6 +13,10 @@ ToDo.init(
             primaryKey: true,
             autoIncrement: true
         },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false

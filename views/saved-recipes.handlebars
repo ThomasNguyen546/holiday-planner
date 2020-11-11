@@ -1,17 +1,17 @@
 <a href="/search-recipes">Search For New Recipe</a>
 
 {{#if recipes.length}}
-<section>
-  <h2>My Recipes</h2>
-  <ul>
+<section id="saved-recipe-container">
+  <h2 class="page-title">My Recipes</h2>
+  <ul id="saved-recipes">
     {{#each recipes as |recipe|}}
     <li>
-      <div class="recipe" id="{{id}}">
-        <div class="title">
+      <div class="recipe-line" id="{{id}}">
+        <div>
           <a href="{{recipe_url}}" class="recipe-title" target="_blank">{{title}}</a>
         </div>
         <div class="recipe-url">
-          {{recipe_url}}
+          ({{format_url recipe_url}})
         </div>
         <button class="delete-recipe-btn">Delete Recipe</button>
       </div>
@@ -20,7 +20,6 @@
   </ul>
 </section>
 {{/if}}
-
 
 
 <script src="/javascript/delete-recipe.js"></script>

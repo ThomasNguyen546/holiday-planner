@@ -11,6 +11,7 @@ var recipesSubmitHandler = function(event) {
     if (searchTerm) {
         getRecipes(searchTerm);
         
+        
         recipeInputEl.value = "";
 
     } else {
@@ -32,9 +33,9 @@ var getRecipes = function(searchTerm) {
       response.json().then(function(data) {
        
         localStorage.setItem("recipes", JSON.stringify(data.hits));
-        var resultsTerm = document.querySelector('input[name="search-term"]').value.trim();
-        resultsTerm.innerHTML = searchTerm;
-        displayRecipes();
+        var resultsTerm = document.getElementById("result-header");
+        resultsTerm.innerHTML = "Showing recipes for: " + searchTerm;
+        displayRecipes(searchTerm);
       })
     } else {
       console.log(response.statusText)
@@ -49,7 +50,7 @@ var getRecipes = function(searchTerm) {
 var displayRecipes = function () {
 
   recipeContainerEl.textContent = "";
-
+  
   var recipes = JSON.parse(localStorage.getItem("recipes") );
   var counter = 0;
 
@@ -68,13 +69,13 @@ var displayRecipes = function () {
 
     // create recipe title element
     var nameEl= document.createElement("h4");
-    nameEl.classList = "recipe-title";
+    nameEl.className = "recipe-title";
     nameEl.innerHTML = recipeName;
     recipeEl.appendChild(nameEl);
 
     // create recipe Image element
     var recipeImg = document.createElement("img");
-    recipeImg.id = "recipe-image"
+    recipeImg.className = "recipe-image"
     recipeImg.src = recipes[i].recipe.image;
     recipeEl.appendChild(recipeImg);
 
@@ -93,13 +94,13 @@ var displayRecipes = function () {
 
     // create Ingredients element
     var ingredientEl = document.createElement("p");
-    ingredientEl.classList = "recipe-ingredients";
-    ingredientEl.innerHTML = 'Ingredients: ' + '<ul><li>' + ingredients.join("</li><li>"); + '</li></ul>';
+    ingredientEl.className = "ingredients-header";
+    ingredientEl.innerHTML = 'Ingredients: ' + '<ul class="recipe-ingredients"><li>' + ingredients.join("</li><li>"); + '</li></ul>';
     recipeEl.appendChild(ingredientEl);
 
     // create Health Labels element
     var healthLabelEl = document.createElement("p");
-    healthLabelEl.classList = "recipe-health";
+    healthLabelEl.className = "recipe-health";
     healthLabelEl.innerHTML = "**" + healthLabels;
     recipeEl.appendChild(healthLabelEl);
 
@@ -114,13 +115,14 @@ var displayRecipes = function () {
   }
 };
 
-   // create save recipe button
+// SAVE RECIPE BUTTON
   var createSaveBtn = function(taskId) {
     var saveRecipeBtn = document.createElement("button");
     saveRecipeBtn.innerHTML = "Save Recipe";
     saveRecipeBtn.className = "btn save-btn";
     saveRecipeBtn.type = "submit";
     saveRecipeBtn.setAttribute("id", taskId);
+    
 
     return saveRecipeBtn;
 };
@@ -134,6 +136,8 @@ var saveBtnHandler = function (event) {
   }
 };
 
+
+// SAVE RECIPES
 async function saveRecipe(id) {
  
   const recipeSelected = document.querySelector(".recipe-card[id='" + id + "']");
