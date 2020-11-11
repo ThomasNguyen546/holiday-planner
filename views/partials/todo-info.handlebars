@@ -1,12 +1,13 @@
 <article class="todo">
     <div class="title">
         <span class="hide todo-id">{{id}}</span>
-        <span>{{type}}</span>
-        <span>{{title}}</span>
-        <span>{{contents}}</span>
+        <span class="item-type">{{type}}</span>
+        <span class="item-title">{{title}}</span>
+        <span class="item-contents">{{contents}}</span>
     </div>
     <div>
-        <button type="submit" class="btn-edit">Edit</button>
+        <button type="button" class="btn-edit">Edit</button>
+        <button type="button" class="btn-save">Save</button>
         <button type="button" class="btn-delete">Delete</button>
     </div>
 </article>
