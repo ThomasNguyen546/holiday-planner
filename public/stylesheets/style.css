@@ -99,11 +99,12 @@ main {
     padding: 2% 4%;
 }
 
-.result-header {
+#result-header {
     font-size: 20px;
     margin: 10px auto;
     width: 50%;
     padding: 10px;
+    text-align: center;
 }
 
 .recipe-card {
