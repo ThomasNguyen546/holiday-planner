@@ -3,10 +3,10 @@ async function saveFormHandler(event) {
 
     const title = $(this).parents(".todo").find(".item-title");
     const contents = $(this).parents(".todo").find(".item-contents");
-    const type = $(this).parents(".todo").find(".item-type");
+    const type = $(this).parents(".todo").find(".item-type").val();
 
-    const titleText = $(title).val();
-    const contentsText = $(contents).val();
+    const titleText = title.val();
+    const contentsText = contents.val();
 
     const textInputTitle = $('<span>')
     .addClass("item-title")
@@ -26,8 +26,8 @@ async function saveFormHandler(event) {
         method: 'PUT',
         body: JSON.stringify({
             type,
-            title,
-            contents
+            title:titleText,
+            contents:contentsText
         }),
         headers: {
             'Content-Type': 'application/json'
