@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
   User,
-  ToDo, 
+  ToDo,
   Recipe
 } = require('../models')
 
@@ -9,32 +9,33 @@ const {
 router.get('/', (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('login')
-  }
-  ToDo.findAll({
-    attributes: [
-      'id',
-      'type',
-      'title',
-      'contents'
-    ],
-  },
-  {
-    where: {
-      user_id: req.session.id
-    }
-  }
-  )
-    .then(dbToDoData => {
-      const todos = dbToDoData.map(todo => todo.get({ plain: true }));
-      res.render('homepage', {
-        todos,
-        loggedIn: req.session.loggedIn
+  } else {
+    ToDo.findAll({
+      attributes: [
+        'id',
+        'type',
+        'title',
+        'contents'
+      ],
+    },
+      {
+        where: {
+          user_id: req.session.id
+        }
+      }
+    )
+      .then(dbToDoData => {
+        const todos = dbToDoData.map(todo => todo.get({ plain: true }));
+        res.render('homepage', {
+          todos,
+          loggedIn: req.session.loggedIn
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
       });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  }
 });
 
 // RENDER LOGIN PAGE
@@ -76,14 +77,14 @@ router.get('/saved-recipes', (req, res) => {
     },
     attributes: ['id', 'title', 'recipe_url']
   })
-  .then(dbRecipeData => {
-    const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
-    res.render('saved-recipes', {recipes, loggedIn: true});
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbRecipeData => {
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('saved-recipes', { recipes, loggedIn: true });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // RENDER SEARCH RECIPE PAGE
