@@ -9,34 +9,30 @@ const {
 router.get('/', (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('login')
-  } else {
-    ToDo.findAll({
-      attributes: [
-        'id',
-        'type',
-        'title',
-        'contents'
-      ],
-    },
-      {
-        where: {
-          user_id: req.session.id
-        }
-      }
-    )
-      .then(dbToDoData => {
-        const todos = dbToDoData.map(todo => todo.get({ plain: true }));
-        res.render('homepage', {
-          todos,
-          loggedIn: req.session.loggedIn
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
   }
-});
+  ToDo.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+    attributes: [
+      'id',
+      'type',
+      'title',
+      'contents'
+    ],
+  })
+    .then(dbToDoData => {
+      const todos = dbToDoData.map(todo => todo.get({ plain: true }));
+      res.render('homepage', {
+        todos,
+        loggedIn: true
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
 
 // RENDER LOGIN PAGE
 router.get('/login', (req, res) => {
