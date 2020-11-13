@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+}
+  
+body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: #333;
+    background-color: #f7c28f;
+}
+  
+a {
+    text-decoration: none;
+    color: #fc9432;
+    font-weight: bold;
+    transition: color .1s;
+}
+  
+a:hover {
+    color: #f5ac67;
+}
+  
+button {
+    background-color: #f2943a;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+  
+button:hover {
+    background-color: #f5b171;
+}
+  
+.todo-list {
+    margin: 0;
+    padding: 0;
+}
+  
+textarea, input {
+    padding: .5%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+  
+textarea:focus, input:focus {
+    outline: none;
+    border: 1px solid #3486eb;
+}
+  
+textarea {
+    min-width: 40%;
+    min-height: 100px;
+}
+  
+form > div {
+    margin-bottom: 2%;
+}
+
+/* Login/Logout Form */
+form label {
+    display: block;
+}
+
+.login-form {
+    width:40%;
+}
+
+.signup-form {
+    width:40%;
+}
+
+label {
+    font-size: 25px;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-image: url("../images/holidayTest2.jpg");
+    background-size: cover;
+    max-width: 100%;
+    background-position: center;
+}
+
+header {
+    /* border-bottom: 1px solid #ccc; */
+    /* display: flex; */
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 0 1%;
+    /* justify-content: center; */
+}
+  
+header h1 {
+    font-size: 50px;
+    /* display: flex; */
+    text-align: center;
+    padding-top: 10px;
+}
+
+/* Navigation Stuff */
+header nav {
+    margin: 7px 0;
+}
+
+header nav ul {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    align-items: center;
+    list-style: none;
+    /* text-align: center; */
+    margin: 5px;
+    padding: 5px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    padding: 10px 35px;
+    font-weight: lighter;
+    font-size: 1.55vw;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: black;
+}
+
+main {
+    flex: 1;
+    padding: 2% 4%;
+}
+
+#result-header {
+    font-size: 25px;
+    margin: 10px auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+/* Recipes Portion */
+
+#searchCard {
+    display: flex;
+    text-align: center;
+    background-image: url("../images/recipeCard1.jpg");
+}
+
+#recipes-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    max-width: 650px;
+    padding: 20px;
+    border-color: #E98F06;
+    border-width: 2px;
+    justify-content: center;
+    margin: 20px auto;
+    background-image: url(../../assets/images/holidayTest2.jpg);
+    background-size: cover;
+    color:  white;
+    text-shadow:
+        -1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.recipe-card {
+    margin: 10px auto;
+    width: 60%;
+    border: 1px solid #E98F06;
+    padding: 10px;
+    text-align: center;
+}
+
+.recipe-ingredients {
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+}
+
+.recipe-card a {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-recipe-btn {
+    font-size: 10px;
+    margin: 15px 0;
+}
+
+#saved-recipes {
+    list-style: none;
+}
+
+.recipe-line {
+    padding: 10px 5px;
+}
+
+.recipe-line a {
+    font-size: 30px;
+}
+
+.recipe-url {
+    font-style: italic;
+    font-size: 14px;
+    margin: auto;
+}
+  
+footer {
+    /* border-top: 1px solid #ccc; */
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 150%;
+    background-image: url("../images/holidayTest1.jpg");
+}
+
+#carouselExampleInterval {
+    width: 50%;
+    max-height: 500px;
+    left: -5%;
+}
+
+.loginForm {
+    display: flex;
+}
+
+.input-group {
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
