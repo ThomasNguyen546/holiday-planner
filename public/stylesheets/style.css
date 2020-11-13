@@ -143,6 +143,10 @@ main {
     padding: 2% 4%;
 }
 
+.page-title {
+    color: #fc9432;
+}
+
 #result-header {
     font-size: 20px;
     margin: 10px auto;
@@ -160,7 +164,7 @@ main {
 .card {
     max-width: 650px;
     padding: 15px;
-    border-color: #63dbc1;
+    border-color: #fc9432;
     border-width: 2px;
     justify-content: center;
     margin: 20px auto;
@@ -168,10 +172,10 @@ main {
     background-size: cover;
     color:  white;
     text-shadow:
-        -1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+        -1px -1px 0 #fc9432,
+		1px -1px 0 #fc9432,
+		-1px 1px 0 #fc9432,
+		1px 1px 0 #fc9432;
 }
 
 .recipe-card {
@@ -192,6 +196,10 @@ main {
 .recipe-card a {
     display: flex;
     flex-direction: column;
+}
+
+#recipes-btn {
+    background-color: #fc9432;
 }
 
 .delete-recipe-btn {
