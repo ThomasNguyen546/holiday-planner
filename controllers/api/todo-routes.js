@@ -35,6 +35,7 @@ router.post('/', (req,res) => {
 
 //Update a ToDo
 router.put('/:id', (req, res) => {
+    console.log(req.body);
     ToDo.update({
         type: req.body.type,
         title: req.body.title,
@@ -45,6 +46,7 @@ router.put('/:id', (req, res) => {
         },
     })
     .then((dbPostData) => {
+        console.log(dbPostData);
         if (!dbPostData) {
             res.status(404).json({
                 message: "No post found with this id"

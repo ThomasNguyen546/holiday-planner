@@ -1,35 +1,66 @@
-<!-- Login Form Portion -->
-<form class="login-form">
-    <div>
-        <label for="email-login">Email:</label>
-        <input type="text" id="email-login" />
-    </div>
-    <div>
-        <label for="password-login">Password:</label>
-        <input type="password" id="password-login" />
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+<div class="row">
+    <div id="loginForms" class="col-4">
+        <!-- Login Form Portion -->
+        <form class="login-form">
+            <div>
+                <label for="email-login">Email:</label>
+                <input type="text" id="email-login" />
+            </div>
+            <div>
+                <label for="password-login">Password:</label>
+                <input type="password" id="password-login" />
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
 
-<!-- Sign Up Form Portion -->
-<form class="signup-form">
-    <div>
-        <label for="username-signup">Username:</label>
-        <input type="text" id="username-signup" />
+        <!-- Sign Up Form Portion -->
+        <form class="signup-form">
+            <div>
+                <label for="username-signup">Username:</label>
+                <input type="text" id="username-signup" />
+            </div>
+            <div>
+                <label for="email-signup">Email:</label>
+                <input type="text" id="email-signup" />
+            </div>
+            <div>
+                <label for="password-signup">Password:</label>
+                <input type="password" id="password-signup" />
+            </div>
+            <div>
+                <button type="submit">Signup</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="email-signup">Email:</label>
-        <input type="text" id="email-signup" />
-    </div>
-    <div>
-        <label for="password-signup">Password:</label>
-        <input type="password" id="password-signup" />
-    </div>
-    <div>
-        <button type="submit">Signup</button>
-    </div>
-</form>
 
+    <div id="carouselExampleInterval" class="carousel slide col-8" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="3000">
+                <img src="../images/croppedPage1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="3000">
+                <img src="../images/loginPage2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="3000">
+                <img src="../images/croppedPage3.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="3000">
+                <img src="../images/loginPage4.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="3000">
+                <img src="../images/loginPage5.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
 <script src="/javascript/login.js"></script>
