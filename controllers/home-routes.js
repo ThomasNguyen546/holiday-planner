@@ -73,14 +73,15 @@ router.get('/saved-recipes', (req, res) => {
     },
     attributes: ['id', 'title', 'recipe_url']
   })
-    .then(dbRecipeData => {
-      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
-      res.render('saved-recipes', { recipes, loggedIn: true });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+
+  .then(dbRecipeData => {
+    const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+    res.render('saved-recipes', {recipes, loggedIn: true});
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 // RENDER SEARCH RECIPE PAGE

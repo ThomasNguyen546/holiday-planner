@@ -144,6 +144,10 @@ main {
     padding: 2% 4%;
 }
 
+.page-title {
+    color: #fc9432;
+}
+
 #result-header {
     font-size: 25px;
     margin: 10px auto;
@@ -175,10 +179,10 @@ main {
     background-size: cover;
     color:  white;
     text-shadow:
-        -1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+        -1px -1px 0 #fc9432,
+		1px -1px 0 #fc9432,
+		-1px 1px 0 #fc9432,
+		1px 1px 0 #fc9432;
 }
 
 .recipe-card {
@@ -199,6 +203,10 @@ main {
 .recipe-card a {
     display: flex;
     flex-direction: column;
+}
+
+#recipes-btn {
+    background-color: #fc9432;
 }
 
 .delete-recipe-btn {
