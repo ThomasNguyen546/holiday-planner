@@ -11,31 +11,28 @@ router.get('/', (req, res) => {
     res.redirect('login')
   }
   ToDo.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
     attributes: [
       'id',
       'type',
       'title',
       'contents'
     ],
-  },
-  {
-    where: {
-      user_id: req.session.id
-    }
-  }
-  )
+  })
     .then(dbToDoData => {
       const todos = dbToDoData.map(todo => todo.get({ plain: true }));
       res.render('homepage', {
         todos,
-        loggedIn: req.session.loggedIn
+        loggedIn: true
       });
     })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
-});
+  });
 
 // RENDER LOGIN PAGE
 router.get('/login', (req, res) => {
